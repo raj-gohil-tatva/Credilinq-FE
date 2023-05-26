@@ -110,6 +110,7 @@ const RegisterForm = () => {
       TermsAndConditions: validationSchema.TermsAndConditions,
     }),
     onSubmit: async (value, action) => {
+      setIsLoading(true);
       const { TermsAndConditions, ReEmail, FileUploadLength, ...rest } = value;
       Object.assign(rest, {
         PhoneNumber: `${countryCode}${rest.PhoneNumber}`,
@@ -558,10 +559,7 @@ const RegisterForm = () => {
           <Button
             className="submit-form-button"
             variant="contained"
-            onClick={() => {
-              setIsLoading(true);
-              handleSubmit();
-            }}
+            onClick={() => handleSubmit()}
             disabled={isLoading}
           >
             Submit
